@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Calendario • Launch Mastery</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles/Calendario.css" />
+</head>
+<body>
+  <header class="cal-header">
+    <button class="home-btn" aria-label="Volver al aula">
+      <img src="Recursos/icons/hogar.png" alt="Inicio"/>
+    </button>
+
+    <div class="tz-dropdown">
+      <div class="tz-selected" tabindex="0">
+        <img class="tz-flag" src="Recursos/icons/Banderas/Colombia.png" alt="Colombia"/>
+        <span class="tz-label">Colombia</span>
+        <span class="tz-arrow">▾</span>
+      </div>
+      <ul class="tz-list hidden">
+        <!-- Se cargarán 21 países, con scroll interno -->
+      </ul>
+    </div>
+  </header>
+  <div class="aula__overlay"></div>
+  <main class="cal-main">
+    <div class="cal-columns">
+      <!-- Día 1 -->
+      <div class="cal-col" data-day="1">
+        <div class="cal-col-header">
+          <div class="cal-day">Día 1</div>
+          <div class="cal-date">9 de junio</div>
+        </div>
+        <ul class="cal-slots"></ul>
+      </div>
+      <!-- Día 2 -->
+      <div class="cal-col" data-day="2">
+        <div class="cal-col-header">
+          <div class="cal-day">Día 2</div>
+          <div class="cal-date">10 de junio</div>
+        </div>
+        <ul class="cal-slots"></ul>
+      </div>
+      <!-- Día 3 -->
+      <div class="cal-col" data-day="3">
+        <div class="cal-col-header">
+          <div class="cal-day">Día 3</div>
+          <div class="cal-date">11 de junio</div>
+        </div>
+        <ul class="cal-slots"></ul>
+      </div>
+    </div>
+
+    <div class="carousel-dots hidden-desktop">
+      <button class="dot"></button>
+      <button class="dot"></button>
+      <button class="dot"></button>
+    </div>
+
+    <button class="btn add-calendar">Agrégalo a tu calendario</button>
+  </main>
+
+  <script src="js/calendario.js"></script>
+</body>
+</html>

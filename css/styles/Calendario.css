@@ -1,0 +1,230 @@
+/* Reset & base */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Montserrat',sans-serif;
+  color:#fff;
+  background: url("../../Recursos/img/Fondo_aula.jpg") center/cover no-repeat;
+  overflow-x:hidden;
+}
+.aula__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+/* Header */
+.cal-header {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2rem;
+  background:#00643A;
+  padding:1rem;
+  position: relative;
+}
+.home-btn {
+  background:none;
+  border:none;
+  cursor:pointer;
+  z-index: 2;
+}
+.home-btn img { width:24px; height:24px; }
+
+/* Selector de zona horaria */
+.tz-dropdown {
+  position:relative;
+  width:220px;
+}
+.tz-selected {
+  font-family:'Montserrat',sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0.4rem 0.8rem;
+  background:#00FA93;
+  border:1px solid #00321D;
+  border-radius:2rem;
+  cursor:pointer;
+  z-index: 2;
+}
+.tz-selected .tz-flag {
+  width:20px; height:14px;
+  object-fit:cover;
+  margin-right:0.5rem;
+}
+.tz-selected .tz-label {
+  flex:1; text-align:left;
+}
+.tz-selected .tz-arrow {
+  margin-left:0.5rem;
+  transition:transform 0.2s ease;
+}
+.tz-selected.open .tz-arrow {
+  transform:rotate(180deg);
+}
+
+/* Lista desplegable */
+.tz-list {
+  position:absolute;
+  top:calc(100% + 0.25rem);
+  left:0;
+  width:100%;
+  max-height:calc(1.5em*10 + 1rem);
+  background:#00FA93;
+  border:1px solid #00321D;
+  border-radius:0.75rem;
+  overflow-y:auto;
+  list-style:none;
+  padding:0.5rem 0;
+  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1;
+}
+.tz-list.hidden { display:none; }
+.tz-list li {
+  display:flex;
+  align-items:center;
+  padding:0.4rem 0.8rem;
+  cursor:pointer;
+  font-family:'Montserrat',sans-serif;
+  font-weight:600;
+  font-size:0.95rem;
+  color:#111;
+}
+.tz-list li:hover {
+  background:rgba(0,0,0,0.1);
+}
+.tz-list li .tz-flag {
+  width:24px; height:16px;
+  object-fit:cover;
+  margin-right:0.5rem;
+}
+
+/* Main */
+.cal-main {
+  padding:2rem 1rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1rem;
+}
+.cal-columns {
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.cal-col {
+  background:#222;
+  border-radius:0.5rem;
+  overflow:hidden;
+  width:280px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  animation:fadeIn 0.6s both;
+}
+.cal-col-header {
+  background:#00643A;
+  width:100%;
+  text-align:center;
+  padding:1rem;
+}
+.cal-day {
+  font-size:1.25rem;
+  font-weight:700;
+  line-height:1;
+}
+.cal-date {
+  font-size:1rem;
+  margin-top:0.25rem;
+}
+.cal-slots {
+  list-style:none;
+  width:100%;
+  padding:1rem 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.5rem;
+}
+.cal-slots li {
+  background:#333;
+  width:90%;
+  padding:0.75rem;
+  border-radius:0.25rem;
+  cursor:pointer;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.95rem;
+  display:flex;
+  justify-content:center;
+  transition:background 0.2s;
+}
+.cal-slots li:hover,
+.cal-slots li:focus {
+  background:#444;
+}
+
+/* Dots = solo móvil */
+.carousel-dots {
+  display:flex;
+  justify-content:center;
+  gap:0.5rem;
+  margin:1rem 0;
+}
+.dot {
+  width:12px; height:12px;
+  border-radius:50%;
+  background:#555;
+  border:none;
+  cursor:pointer;
+  transition:background 0.3s;
+}
+.dot.active {
+  background:#00FA93;
+  box-shadow:0 0 8px rgba(0,250,147,0.8);
+}
+
+/* Botón “Agregar” */
+.btn.add-calendar {
+  font-family:'Montserrat',sans-serif;
+  font-weight:600;
+  padding:0.8em 2em;
+  background:#00FA93;
+  color:#111;
+  border:none;
+  border-radius:2rem;
+  cursor:pointer;
+  transition:transform 0.2s ease;
+}
+.btn.add-calendar:hover,
+.btn.add-calendar:focus {
+  transform:translate(-0.25rem,-0.25rem);
+}
+
+/* Fade-in */
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0);    }
+}
+
+/* Responsive */
+@media (max-width:768px) {
+  .cal-columns {
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+  .cal-col {
+    flex:0 0 100%;
+    scroll-snap-align:center;
+    margin-bottom:1rem;
+  }
+  .hidden-desktop { display:flex; }
+}
+@media (min-width:769px) {
+  .hidden-desktop { display:none; }
+}

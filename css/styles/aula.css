@@ -1,0 +1,151 @@
+/* aula.css */
+
+/* — Reset básico — */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* — Body y contenedor principal de Aula — */
+  html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;           /* evitamos scroll extra */
+  }
+  
+  #aula {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url("../../Recursos/img/Fondo_aula.jpg") center/cover no-repeat;
+  }
+  
+  .aula__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    pointer-events: none;
+  }
+  
+  /* — Grid de cards 3×2 centrado en ambos ejes — */
+  .aula__grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 2rem;
+    width: calc(100% - 2rem);
+    max-width: 1200px;
+    padding: 0 1rem;
+    z-index: 1; /* encima del overlay */
+  }
+  
+  /* — Cada card — */
+  .aula__card {
+    background: #fff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .aula__card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  }
+  
+  /* — Header verde con curva superior — */
+  .aula__card-header {
+    background: #00A84C;
+    padding: 1rem;
+    text-align: center;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+  }
+  .aula__card-header img {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  
+  /* — Cuerpo blanco con texto centrado — */
+  .aula__card-body {
+    flex: 1;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .aula__label {
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0.5rem;
+  }
+  .aula__count {
+    font-size: 1.25rem;
+    color: #111;
+  }
+  
+  /* — Footer con botón — */
+  .aula__card-footer {
+    padding: 1rem;
+    text-align: center;
+  }
+  .aula__link {
+    display: inline-block;
+    padding: 0.6em 1.2em;
+    background: #00A84C;
+    color: #fff;
+    border-radius: 2rem;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .aula__link:hover {
+    background: #007a2f;
+    transform: translate(-2px, -2px);
+  }
+  
+  /* — Responsive escritorio (<=768px): 1 columna de grid — */
+  @media (max-width: 768px) {
+    .aula__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* — Responsive móvil (<=600px): carrusel 2×1 — */
+  @media (max-width: 600px) {
+    /* convertimos el grid en flex-scroll */
+    .aula__grid {
+      display: flex !important;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 1rem;
+      padding-bottom: 0.5rem;
+    }
+  
+    .aula__grid::-webkit-scrollbar {
+      display: none;
+    }
+    .aula__grid {
+      scrollbar-width: none;
+    }
+  
+    /* cada card ocupa el 50% del ancho viewport */
+    .aula__card {
+      flex: 0 0 50%;
+      scroll-snap-align: start;
+      margin: 0;
+    }
+  }
+  #aula {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center center;
+  }
+  #aula.zoom-out {
+    transform: scale(1.2);
+    opacity: 0;
+  }  

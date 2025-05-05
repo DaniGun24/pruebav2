@@ -1,0 +1,277 @@
+/* bienvenida.css */
+
+/* — Reset básico — */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* — Fuentes y fondo animado — */
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    #004d1a,#006b2d,#009a4c,#004d1a,#006b2d,#009a4c,#004d1a,#006b2d,#009a4c,#004d1a,#006b2d,#009a4c
+  );
+  background-size: 300% 300%;
+  animation: bgRadial 12s ease-in-out infinite;
+}
+
+@keyframes bgRadial {
+  0%   { background-position: 20% 20%; }
+  33%  { background-position: 80% 20%; }
+  66%  { background-position: 80% 80%; }
+  100% { background-position: 20% 20%; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* — Contenedor principal — */
+.welcome {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: 4rem auto;
+  animation: fadeInUp 1s ease-out both;
+}
+
+/* — Bloque de texto y botón — */
+.welcome-text {
+  flex: 1 1 400px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeInUp 1s ease-out both;
+}
+
+.welcome-text h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+.welcome-text h1 .tm {
+  font-size: 0.4em;
+  vertical-align: super;
+  margin-left: 0.2em;
+}
+
+.welcome-text p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.welcome-text .launch {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255,255,255,0.8);
+  margin: 0.5rem 0;
+}
+
+.welcome-text .mastery {
+  font-size: clamp(2rem, 8vw, 4rem);
+  color: #00FA93;
+  text-shadow:
+    0 0 10px rgba(0,250,147,0.7),
+    0 0 20px rgba(0,250,147,0.4);
+  margin: 0.5rem 0;
+}
+
+.welcome-text .btn {
+  --bg: #00FA93;
+  --border: #00643A;
+  --hover-bg: #00643A;
+  --hover-text: #00FA93;
+  align-self: start;
+  margin-top: 2rem;
+  padding: 0.8em 2em;
+  font-size: 1rem;
+  background: var(--bg);
+  color: #111;
+  border: 2px solid var(--border);
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease,
+              background 0.2s ease,
+              color 0.2s ease;
+}
+
+.welcome-text .btn:hover {
+  background: var(--hover-bg);
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  box-shadow: 0.25rem 0.25rem var(--border);
+}
+
+.welcome-text .btn:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+/* — Bloque de la tarjeta — */
+.welcome-card {
+  flex: 1 1 300px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInUp 1s ease-out both 0.3s;
+}
+
+/* — Tarjeta principal — */
+/* — Tarjeta principal — */
+.card {
+  --card-w: clamp(260px, 30vw, 360px);
+  width: var(--card-w);
+  aspect-ratio: 23 / 30;
+  background: #404040;
+  border-radius: 1rem;
+  padding: calc(var(--card-w) * 0.06) calc(var(--card-w) * 0.04);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: floatCard 3s ease-in-out infinite alternate;
+
+  /* make the card a column flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* header, body, footer spread out */
+  align-items: center;
+}
+
+/* the hover “3D” shadow behind */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.2);
+  border-radius: 1rem;
+  transform: translate(0,0);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+.card:hover,
+.card:focus {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.8);
+}
+.card:hover::before,
+.card:focus::before {
+  transform: translate(10px, 10px);
+}
+
+/* — Header — */
+.card-header {
+  text-align: center;
+}
+.card-launch {
+  font-size: calc(var(--card-w) * 0.12);
+  color: #fff;
+  text-shadow: 0 0 calc(var(--card-w) * 0.03) rgba(255,255,255,0.6);
+}
+.card-launch .tm {
+  font-size: 0.5em;
+  vertical-align: super;
+  margin-left: 0.2em;
+}
+.card-mastery {
+  font-size: calc(var(--card-w) * 0.18);
+  color: #00FA93;
+  text-shadow:
+    0 0 calc(var(--card-w) * 0.02) rgba(0,250,147,0.7),
+    0 0 calc(var(--card-w) * 0.04) rgba(0,250,147,0.4);
+  margin-top: calc(var(--card-w) * 0.01);
+}
+
+/* — Body: CENTERED — */
+.card-body {
+  flex: 1;                     /* take all available middle space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* vertical centering */
+  align-items: center;         /* horizontal centering */
+}
+.card-day {
+  font-size: calc(var(--card-w) * 0.06);
+  color: #fff;
+  text-shadow: 0 0 calc(var(--card-w) * 0.02) rgba(255,255,255,0.6);
+  margin-bottom: calc(var(--card-w) * 0.03);
+}
+.username-badge {
+  background: #fff;
+  color: #111;
+  font-size: calc(var(--card-w) * 0.05);
+  font-weight: bold;
+  padding: calc(var(--card-w) * 0.03) calc(var(--card-w) * 0.08);
+  border-radius: 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* — Footer: now in flex flow — */
+.card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: calc(var(--card-w) * 0.05);
+}
+.card-logo {
+  max-width: calc(var(--card-w) * 0.6);
+  height: auto;
+}
+
+/* floating animation */
+@keyframes floatCard {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+/* Animación flotante */
+@keyframes floatCard {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Responsive — apila en móvil */
+@media (max-width: 800px) {
+  .welcome {
+    flex-direction: column;
+    align-items: center;
+  }
+  .welcome-card {
+    margin-top: 2rem;
+  }
+}
+/* Hover “push” al estilo de tu botón */
+.card {
+  /* …tus reglas previas… */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.card:hover,
+.card:focus {
+  /* “Elevación” y desplazamiento */
+  transform: translate(-0.25rem, -0.25rem);
+  /* Sombra tipo botón con verde suave */
+  box-shadow: 
+    0.25rem 0.25rem rgba(0,250,147,0.6),
+    0 0 16px rgba(0,250,147,0.4);
+  /* Opcional: realzar un pelín el fondo para mayor contraste */
+  background: #4a4a4a;
+}
+
+.card:active {
+  /* Al hacer “clic”, vuelve a la posición base */
+  transform: translate(0, 0);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+}

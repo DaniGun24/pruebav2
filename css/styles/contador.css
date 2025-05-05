@@ -1,0 +1,124 @@
+/* contador.css */
+
+/* Fade-in de toda la sección */
+@keyframes fadeInSection {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0);   }
+  }
+  
+  /* Degradado animado para los números */
+  @keyframes gradientShift {
+    0%   { background-position:   0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position:   0% 50%; }
+  }
+  
+  /* Contenedor completo del contador */
+  .countdown {
+    width: 100vw;
+    padding: 6rem 1rem;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:
+      linear-gradient(
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.6)
+      ),
+      url('../../Recursos/img/fondo_contador.jpg') center/cover no-repeat;
+    animation: fadeInSection 1s ease-out both;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Título “Launch™ Mastery” con colores y efecto de texto del hero */
+  .countdown__title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 700;
+    color: #fff;
+    text-shadow:
+      0 0 20px rgba(255,255,255,0.8);
+    margin-bottom: 0.5rem;
+    /* Para dividir LAUNCH y MASTERY en elementos separados */
+    display: flex;
+    gap: 0.5rem;
+  }
+  .countdown__title .launch {
+    color: #fff;
+  }
+  .countdown__title .mastery {
+    color: #00FA93;
+    text-shadow:
+      0 0 10px rgba(0,250,147,0.7),
+      0 0 20px rgba(0,250,147,0.4);
+  }
+  
+  /* Subtítulo “Inicia en:” un poco más grueso */
+  .countdown__subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 600;
+    color: #CCFEE9;
+    margin-bottom: 2rem;
+  }
+  
+  /* Contenedor de las unidades */
+  .countdown__units {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Cada bloque de unidad */
+  .countdown__unit {
+    text-align: center;
+  }
+  
+  /* Números con degradado animado */
+  .countdown__value {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 700;
+    background: linear-gradient(
+      270deg,
+      #00321D, #00643A, #009658, #00C875, #00FA93, #33FBA8
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite;
+    line-height: 1;
+  }
+  
+  /* Etiquetas siempre en blanco */
+  .countdown__label {
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+    color: #FFFFFF;
+  }
+  
+  /* Responsive móviles */
+  @media (max-width: 600px) {
+    .countdown {
+      padding: 4rem 1rem;
+    }
+    .countdown__title {
+      font-size: clamp(2rem, 12vw, 4rem);
+    }
+    .countdown__subtitle {
+      font-size: clamp(0.9rem, 4vw, 1.1rem);
+    }
+    .countdown__value {
+      font-size: clamp(2rem, 10vw, 4rem);
+    }
+    .countdown__label {
+      font-size: clamp(0.6rem, 3vw, 0.85rem);
+    }
+    .countdown__units {
+      gap: 1rem;
+    }
+  }
+  

@@ -1,0 +1,228 @@
+/* banner.css */
+/* ================================================== */
+
+/* 1) Fade‐in de toda la sección */
+@keyframes bannerFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 2) Contenedor principal */
+.banner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: bannerFade 1s ease-out both;
+}
+
+/* 3) Imagen de cabecera */
+.banner__inner {
+  width: 100%;
+  aspect-ratio: 16/5;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 20px rgba(0,250,147,0.3);
+}
+.banner__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 4) Controles: botón, formulario, popup */
+.banner__controls {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1;
+}
+/* Botón “Unirse” */
+.join-btn {
+  padding: 0.8em 2em;
+  font-size: 1rem;
+  background: #00FA93;
+  color: #111;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0,250,147,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.join-btn:hover {
+  transform: translate(-0.25rem, -0.25rem);
+  box-shadow: 0.25rem 0.25rem #00321D;
+}
+/* Formulario de email */
+.email-form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.email-form.hidden {
+  display: none !important;
+}
+.email-input {
+  flex: 1;
+  padding: 0.6em 1em;
+  border: 1px solid #00C875;
+  border-radius: 2rem;
+  outline: none;
+  font-size: 1rem;
+}
+.submit-btn {
+  padding: 0.6em 1.2em;
+  background: #00643A;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.submit-btn:active {
+  transform: translate(0);
+}
+
+/* 5) Overlay semi-transparente + blur */
+#modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 900;      /* por debajo del popup */
+  display: none;
+}
+#modal-overlay.active {
+  display: block;
+}
+
+/* 6) Pop-up de error, siempre fixed y centrado */
+.error-box {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px; max-width: 90%;
+  background: rgba(0,0,0,0.85);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+  color: #fff;
+  text-align: center;
+  z-index: 1000;     /* encima del overlay */
+  animation: bannerFade 0.4s ease-out both;
+}
+.error-box.hidden {
+  display: none !important;
+}
+.error-msg {
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+/* Botones dentro del popup */
+.error-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.error-buttons .btn {
+  flex: 1;
+  padding: 0.6em 1em;
+  font-size: 0.9rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.help-btn {
+  background: #00A8F0;
+  color: #111;
+  box-shadow: 0 0 8px rgba(0,168,240,0.6);
+}
+.help-btn:hover {
+  transform: translate(-0.2rem, -0.2rem);
+  box-shadow: 0.2rem 0.2rem #00321D;
+}
+.retry-btn {
+  background: #C022FF;
+  color: #111;
+  box-shadow: 0 0 8px rgba(192,34,255,0.6);
+}
+.retry-btn:hover {
+  transform: translate(-0.2rem, -0.2rem);
+  box-shadow: 0.2rem 0.2rem #00321D;
+}
+
+/* 7) Carrusel deslizante */
+.banner-cards-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.banner-cards {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.banner-cards::-webkit-scrollbar {
+  display: none;
+}
+.banner-card {
+  flex: 0 0 30%;
+  background: #202020;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  scroll-snap-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.banner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+}
+.banner-card img {
+  width: 100%; height: 180px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.banner-card p {
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* 8) Puntos de navegación */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  z-index: 1;
+}
+.dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #555;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.dot.active {
+  background: #FFF;
+  box-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+
+/* 9) Responsive */
+@media (max-width: 768px) {
+  .banner-card { flex: 0 0 100%; }
+}

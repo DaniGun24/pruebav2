@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Launch Mastery</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/styles/banner.css" />
+  <link rel="stylesheet" href="css/styles/contador.css" />
+</head>
+<body>
+  <!-- Overlay para popup de error -->
+  <div id="modal-overlay" class="hidden"></div>
+
+  <!-- === HERO === -->
+  <section class="hero">
+    <h1 class="launch">
+      LAUNCH<span class="tm">™</span>
+    </h1>
+    <div class="mastery-wrap">
+      <h2 class="mastery">MASTERY</h2>
+      <h2 class="reflection" aria-hidden="true">MASTERY</h2>
+    </div>
+  </section>
+
+  <!-- === BANNER & CARDS === -->
+  <section id="banner" class="banner">
+    <!-- 1) Imagen de cabecera -->
+    <div class="banner__inner">
+      <img
+        src="Recursos/img/Banner.jpg.png"
+        alt="Banner Launch Mastery"
+        class="banner__img"
+      />
+    </div>
+
+    <!-- 2) Controles: Unirse, formulario y popup -->
+    <div class="banner__controls">
+      <button id="join-btn" class="btn join-btn">Unirse</button>
+
+      <form id="email-form" class="email-form hidden">
+        <input
+          type="email"
+          id="email-input"
+          placeholder="Tu correo electrónico"
+          class="email-input"
+        />
+        <button type="submit" class="btn submit-btn">Enviar</button>
+      </form>
+
+      <div id="error-box" class="error-box hidden">
+        <div class="error-msg">
+          Parece que hubo un error. No encontramos este correo en la lista de
+          registrados para el evento. Vuelve a intentarlo o contacta con un
+          asesor.
+        </div>
+        <div class="error-buttons">
+          <button class="btn help-btn">Hablar con un asesor</button>
+          <button class="btn retry-btn">Reintentar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3) WRAPPER para ocultar clones -->
+    <div class="banner-cards-wrapper">
+      <div class="banner-cards">
+        <div class="banner-card">
+          <img src="Recursos/img/card1.webp" alt="Convertiremos todo eso…"/>
+          <p>
+            Convertiremos todo eso que sabes hacer, tu conocimiento o experiencia y lo vamos a empaquetar en un curso digital.
+          </p>
+        </div>
+        <div class="banner-card">
+          <img src="Recursos/img/card2.webp" alt="Oferta irresistible"/>
+          <p>
+            Crearemos una oferta irresistible para tu curso de manera que la gente quiera comprarla de inmediato.
+          </p>
+        </div>
+        <div class="banner-card">
+          <img src="Recursos/img/card3.webp" alt="Plan de lanzamiento"/>
+          <p>
+            Diseñaremos tu plan de lanzamiento (venta) con todos los detalles, procesos y paso a paso.
+          </p>
+        </div>
+        <div class="banner-card">
+          <img src="Recursos/img/card4.webp" alt="Estrategia de marketing"/>
+          <p>
+            Crearás tus propios contenidos para posicionarte en redes sociales como un experto.
+          </p>
+        </div>
+        <div class="banner-card">
+          <img src="Recursos/img/card5.webp" alt="Automatización"/>
+          <p>
+            Podrás influenciar a las personas y generar deseo de compra por tu curso de forma instantánea.
+          </p>
+        </div>
+        <div class="banner-card">
+          <img src="Recursos/img/card6.webp" alt="Soporte continuo"/>
+          <p>
+            Tendrás tu propio plan de entrega de tu curso digital con todos los detalles necesarios para que sea un éxito.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4) Puntos de navegación -->
+    <div class="carousel-dots"></div>
+  </section>
+
+  <!-- === CONTADOR === -->
+  <section id="countdown" class="countdown">
+    <h2 class="countdown__title">
+      <span class="launch">LAUNCH<span class="tm">™</span></span>
+      <span class="mastery">MASTERY</span>
+    </h2>
+    <p class="countdown__subtitle">Inicia en:</p>
+    <div class="countdown__units">
+      <div class="countdown__unit">
+        <div id="days" class="countdown__value">00</div>
+        <div class="countdown__label">Días</div>
+      </div>
+      <div class="countdown__unit">
+        <div id="hours" class="countdown__value">00</div>
+        <div class="countdown__label">Horas</div>
+      </div>
+      <div class="countdown__unit">
+        <div id="minutes" class="countdown__value">00</div>
+        <div class="countdown__label">Minutos</div>
+      </div>
+      <div class="countdown__unit">
+        <div id="seconds" class="countdown__value">00</div>
+        <div class="countdown__label">Segundos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="js/banner.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

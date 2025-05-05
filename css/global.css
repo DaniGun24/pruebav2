@@ -1,0 +1,159 @@
+/* — Reset & full-screen — */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* — Evito scroll horizontal, permito vertical — */
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  min-height: 100vh;     /* deja que el contenido crezca más allá del viewport */
+  overflow-y: auto;      /* permite scroll vertical cuando el contenido excede */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(circle at top, #000000, #202020);
+  color: #fff;
+}
+
+/* — Hero & Banner ancho máximo — */
+.hero,
+.banner {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+/* — Separador entre hero y banner — */
+.hero {
+  text-align: center;
+  position: relative;
+  margin-bottom: 4rem; /* ajusta aquí si quieres más/menos espacio */
+}
+
+/* — Animación fadeIn — */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* — Animaciones flotación — */
+@keyframes floatMastery {
+  0%   { transform: translateY(0);      }
+  100% { transform: translateY(-15px);  }
+}
+@keyframes floatReflection {
+  0%   { transform: translateY(0) scaleY(-1.5);   }
+  100% { transform: translateY(15px) scaleY(-1); }
+}
+/* — Pulsos bombilla en reflejo — */
+/*@keyframes bulb {
+  0%,50%,100% { filter: brightness(0.5) blur(30px); }
+  10%,60%     { filter: brightness(1)   blur(20px);  }
+  30%,80%     { filter: brightness(0.8) blur(10px);  }
+}
+
+/* — LAUNCH ™ — */
+.launch {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  text-shadow: 0 0 20px rgba(255,255,255,0.8);
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+.tm {
+  font-size: 30px;       /* ~30px */
+  vertical-align: super;
+  margin-left: 0.2em;
+}
+
+/* — Mastery + Reflejo contenedor — */
+.mastery-wrap {
+  position: relative;
+  margin: 1rem 0;
+}
+
+/* — MASTERY principal — */
+.mastery {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  color: #00FA93;
+  text-shadow:
+    0 0 10px rgba(0,250,147,0.7),
+    0 0 20px rgba(0,250,147,0.4);
+  opacity: 0;
+  animation:
+    fadeIn       1s ease-out forwards 0.5s,
+    floatMastery 1.5s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 2; /* encima del reflejo */
+}
+
+/* — Reflejo (mismo tamaño que Mastery) — */
+.reflection {
+  position: absolute;
+  top: 100%; left: 0;
+  width: 100%;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  color: #00FA93;
+  opacity: 0.4;
+  transform: translateY(0) scaleY(-1);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 1; /* debajo de Mastery y botón */
+  animation:
+    fadeIn          1s ease-out forwards 0.5s,
+    floatReflection 1.5s ease-in-out infinite alternate,
+    bulb            5s ease-in-out infinite;
+}
+
+/* — Botón con efecto “push” — */
+.btn {
+  --bg: #00643A;
+  --border: #00321D;
+  --hover-bg: #009658;
+  --hover-text: #00321D;
+  margin-top: 2rem;
+  padding: 0.8em 2em;
+  font-size: 1rem;
+  background: var(--bg);
+  color: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;  /* siempre encima del reflejo */
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards 1s;
+  transition: transform 0.2s ease,
+              background 0.2s ease,
+              box-shadow 0.2s ease;
+}
+.btn:hover {
+  background: var(--hover-bg);
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  box-shadow: 0.25rem 0.25rem var(--border);
+}
+.btn:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+/* — Responsive móviles — */
+@media (max-width: 600px) {
+  .launch,
+  .mastery {
+    font-size: clamp(2rem, 12vw, 4rem);
+  }
+  .btn {
+    margin-top: 1.5rem;
+    padding: 0.6em 1.5em;
+  }
+}
+.hidden { display: none !important; }
